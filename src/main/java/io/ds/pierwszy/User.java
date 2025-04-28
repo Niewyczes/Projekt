@@ -19,18 +19,18 @@ public class User {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public String getSurname() {
-        return this.surname;
+        return surname;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public String getLogin() {
-        return this.login;
+        return login;
     }
 }

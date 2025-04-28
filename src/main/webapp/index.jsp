@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>Rypka</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="styl.css"/>
 </head>
 <body>
 <style>
@@ -14,17 +14,25 @@
         text-align: center;
     }
 </style>
-<% User user = (User) session.getAttribute("user");
 %>
-<%if (user==null){%>
-<h1>Witamy na stronie Rypka!</h1>
-<h2>Potrzebujesz artykułów wędkarskich albo chcesz zacząć</h2>
-<h3>Zaloguj się:</h3>
-<h3>Rejestracja:</h3>
-<h2>Oto nasze produkty:</h2>
-<%
+<%  User user = (User) session.getAttribute("user");
     List<Product> products = (List<Product>) application.getAttribute("globalProducts");
 %>
+<h1>Witamy na stronie Rypka!</h1>
+<%if (user==null){ %>
+<h2>Potrzebujesz artykułów wędkarskich albo chcesz zacząć</h2>
+<h3>Zaloguj się:</h3>
+<a href="logowanie.jsp">Kliknij tutaj aby się zalogować</a>
+<h3>Rejestracja:</h3>
+<a href="formularz.jsp">Kliknij tutaj aby dokonać rejestracji</a>
+<%} else{ %>
+<p> Witaj <%= user.getName() %>!</p>
+<% } %>
+<form action = 'logout'>
+    <input type ='submit' value='Wyloguj się'/>
+</form>
+<% %>
+<h2>Oto nasze produkty:</h2>
 <% if (products == null) { %>
 <p style="color:red;">Produkty nie zostały załadowane!</p>
 <% } else { %>
@@ -39,10 +47,5 @@
     <% } %>
 </ul>
 <% } %>
-<form action = 'logout'>
-    <input type ='submit' value='Wyloguj się'/>
-</form>
-<%} %>
-
 </body>
 </html>
