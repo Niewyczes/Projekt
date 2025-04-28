@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package com.example.demo;
+package io.ds.pierwszy;
 
 public class User {
     String name;
