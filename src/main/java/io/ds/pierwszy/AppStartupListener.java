@@ -15,8 +15,9 @@ public class AppStartupListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
 
         List<Product> products = new ArrayList<>();
-        products.add(new Product("ubrania","kalosze", 29.99,"Super nie przecieka"));
-        products.add(new Product("sprzęt","wędka", 69.98, "Twarda i gitówa" ));
+        products.add(new Product("ubrania", "kalosze", 29.99, "Super nie przecieka", "kalosze.jpg"));
+        products.add(new Product("sprzęt", "wędka", 69.98, "Twarda i gitówa", "wedka.jpg"));
+
 
         sce.getServletContext().setAttribute("globalProducts", products);
     }

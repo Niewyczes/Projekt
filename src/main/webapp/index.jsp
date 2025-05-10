@@ -40,9 +40,11 @@
 <ul>
     <% for (Product product : products) { %>
     <li>
+        <strong>Kategoria:</strong> <%=product.getCategory()%><br/>
         <strong>Nazwa:</strong> <%= product.getName() %><br/>
         <strong>Cena:</strong> <%= product.getPrice() %> PLN<br/>
         <strong>Opis:</strong> <%= product.getDescription() %>
+        <img src="image/<%= product.getImage() %>" alt="<%= product.getName() %>" style="width:200px; height:auto;"/>
     </li>
     <% } %>
 </ul>
