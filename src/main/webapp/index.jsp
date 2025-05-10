@@ -45,7 +45,11 @@
         <strong>Cena:</strong> <%= product.getPrice() %> PLN<br/>
         <strong>Opis:</strong> <%= product.getDescription() %>
         <img src="image/<%= product.getImage() %>" alt="<%= product.getName() %>" style="width:200px; height:auto;"/>
-    </li>
+        <form action="cart" method="post">
+            <input type="hidden" name="productId" value="<%=product.getId()%>" />
+            <label for="quantity_<%=product.getId() %>" type="number" name="quantity" value="1" min="1"/>
+            <button type="submit">Dodaj do koszyka</button>
+            </form>
     <% } %>
 </ul>
 <% } %>
