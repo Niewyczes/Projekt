@@ -7,6 +7,7 @@
 <head>
     <title>Rypka</title>
     <link rel="stylesheet" href="styl.css"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <style>
@@ -14,7 +15,6 @@
         text-align: center;
     }
 </style>
-%>
 <%  User user = (User) session.getAttribute("user");
     List<Product> products = (List<Product>) application.getAttribute("globalProducts");
 %>
@@ -48,7 +48,7 @@
         <form action="cart" method="post">
             <input type="hidden" name="productId" value="<%=product.getId()%>" />
             <label for="quantity_<%=product.getId() %>" type="number" name="quantity" value="1" min="1"/>
-            <button type="submit">Dodaj do koszyka</button>
+            <button type="submit"class="btn btn-dark">Dodaj do koszyka</button>
             </form>
     <% } %>
 </ul>
