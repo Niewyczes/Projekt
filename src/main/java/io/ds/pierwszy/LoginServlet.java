@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("user");
-
+        System.out.println("tu");
         if (sessionUser != null) {
             response.getWriter().write("Zalogowany użytkownik: " + sessionUser.getLogin());
         } else {
@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
         dis.forward(request, response);
     }
+
+
 
     public void destroy() {
     }

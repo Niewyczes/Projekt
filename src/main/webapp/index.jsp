@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <title>Rypka</title>
     <link rel="stylesheet" href="styl.css"/>
 </head>
@@ -14,7 +16,8 @@
         text-align: center;
     }
 </style>
-%>
+
+
 <%  User user = (User) session.getAttribute("user");
     List<Product> products = (List<Product>) application.getAttribute("globalProducts");
 %>
@@ -27,10 +30,11 @@
 <a href="formularz.jsp">Kliknij tutaj aby dokonać rejestracji</a>
 <%} else{ %>
 <p> Witaj <%= user.getName() %>!</p>
-<% } %>
 <form action = 'logout'>
     <input type ='submit' value='Wyloguj się'/>
 </form>
+<% } %>
+
 <% %>
 <h2>Oto nasze produkty:</h2>
 <% if (products == null) { %>
@@ -45,7 +49,11 @@
         <strong>Cena:</strong> <%= product.getPrice() %> PLN<br/>
         <strong>Opis:</strong> <%= product.getDescription() %>
         <img src="image/<%= product.getImage() %>" alt="<%= product.getName() %>" style="width:200px; height:auto;"/>
-    </li>
+        <form action="cart" method="post">
+            <input type="hidden" name="productId" value="<%=product.getId()%>" />
+            <label for="quantity_<%=product.getId() %>" type="number" name="quantity" value="1" min="1"/>
+            <button type="submit" class="btn btn-dark">Dodaj do koszyka</button>
+            </form>
     <% } %>
 </ul>
 <% } %>
