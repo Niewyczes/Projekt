@@ -1,5 +1,4 @@
 package io.ds.pierwszy;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,9 +11,8 @@ import java.io.IOException;
         value={"/logout"}
 )
 public class logout extends HttpServlet{
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 HttpSession session=request.getSession();
 session.invalidate();
-RequestDispatcher rd =request.getRequestDispatcher("index.jsp");
-rd.forward(request,response);
+response.sendRedirect("index.jsp");
     }}

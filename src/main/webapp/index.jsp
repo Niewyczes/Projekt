@@ -15,7 +15,8 @@
         text-align: center;
     }
 </style>
-<%  User user = (User) session.getAttribute("user");
+<%
+    User user = (User) session.getAttribute("user");
     List<Product> products = (List<Product>) application.getAttribute("globalProducts");
 %>
 <h1>Witamy na stronie Rypka!</h1>
@@ -28,7 +29,7 @@
 <%} else{ %>
 <p> Witaj <%= user.getName() %>!</p>
 <% } %>
-<form action = 'logout'>
+<form action = 'logout' method ='post'>
     <input type ='submit' value='Wyloguj się'/>
 </form>
 <% %>

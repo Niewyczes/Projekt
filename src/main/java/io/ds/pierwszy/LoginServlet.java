@@ -1,5 +1,4 @@
 package io.ds.pierwszy;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,19 +19,28 @@ public class LoginServlet extends HttpServlet {
     }
 
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession();
-        User sessionUser = (User) session.getAttribute("user");
-
-        if (sessionUser != null) {
-            response.getWriter().write("Zalogowany użytkownik: " + sessionUser.getLogin());
-        } else {
-            response.getWriter().write("Brak zalogowanego użytkownika.");
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String login = request.getParameter("login");
+        String password = request.getParameter("haslo");
+        if (login == null || password == null || login.isEmpty() || password.isEmpty()) {
+            request.setAttribute("error", "Wprowadź login i hasło.");
+            request.getRequestDispatcher("logowanie.jsp").forward(request, response);
+            return;
         }
+        User user = UserList.getUser(login);
 
-        RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
-        dis.forward(request, response);
+        if (user != null && user.getPassword().equals(password)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            response.sendRedirect("index.jsp");
+
+        } else {
+            request.setAttribute("error","Nieprawidłowy login lub haslo");
+            request.getRequestDispatcher("logowanie.jsp").forward(request, response);
+
+        }
     }
+
 
     public void destroy() {
     }

@@ -11,7 +11,7 @@ public class User {
     String password;
     String login;
 
-    public User(String name, String surname, String password, String login) {
+    public User(String name, String surname, String login, String password) {
         this.name = name;
         this.surname = surname;
         this.password = password;
@@ -26,11 +26,13 @@ public class User {
         return surname;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    public String getLogin() {
-        return login;
-    }
+
 }

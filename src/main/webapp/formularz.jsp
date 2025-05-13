@@ -8,15 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Formularz Rejestracji Rypka</title>
 </head>
 <body>
 <h1>Zarejestruj się w aplikacji</h1>
-<form action="hello-servlet">
-    Wpisz login: <input type="text" name="login"/>
-    Wpisz hasło: <input type="password" name="haslo"/>
-    Wpisz imię: <input type="text" name="imie"/>
-    Wpisz nazwisko: <input type="text" name="nazwisko"/>
+<% String error = (String) request.getAttribute("error"); %>
+<% if (error != null) { %>
+<p style="color:red;"><%= error %></p>
+<% } %>
+<form action="hello-servlet" method="post">
+    Wpisz login: <input type="text" name="login" maxlength="20" minlength="5" />
+    Wpisz hasło: <input type="password" name="haslo" maxlength="20" minlength="6" />
+    Wpisz imię: <input type="text" name="imie" maxlength="14" minlength="4" />
+    Wpisz nazwisko: <input type="text" name="nazwisko" maxlength="30" minlength="4" />
     <input type="submit" value="Wyślij">
 </form>
 </body>
