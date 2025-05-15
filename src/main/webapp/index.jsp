@@ -18,7 +18,9 @@
 <%
     User user = (User) session.getAttribute("user");
     List<Product> products = (List<Product>) application.getAttribute("globalProducts");
+    String selectedCategory = request.getParameter("kategoria"); //test
 %>
+
 <h1>Witamy na stronie Rypka!</h1>
 <%if (user==null){ %>
 <h2>Potrzebujesz artykułów wędkarskich albo chcesz zacząć</h2>
@@ -33,26 +35,44 @@
     <input type ='submit' value='Wyloguj się'/>
 </form>
 <% %>
+
 <h2>Oto nasze produkty:</h2>
+<h2>Kategorie:</h2>
+<div class="category-menu">
+    <a href="index.jsp?kategoria=Wędziska">Wędziska</a>
+    <a href="index.jsp?kategoria=Akcesoria">Akcesoria</a>
+    <a href="index.jsp?kategoria=Przynęty">Przynęty</a>
+    <a href="index.jsp?kategoria=Podbieraki">Podbieraki</a>
+    <a href="index.jsp">[Pokaż wszystkie]</a>
+</div>
+
 <% if (products == null) { %>
 <p style="color:red;">Produkty nie zostały załadowane!</p>
 <% } else { %>
 <p style="color:green;">Załadowano <%= products.size() %> produktów!</p>
 <ul>
-    <% for (Product product : products) { %>
+    <% for (Product product : products) {
+        if (selectedCategory == null || product.getCategory().equalsIgnoreCase(selectedCategory)) {
+    %>
+
     <li>
-        <strong>Kategoria:</strong> <%=product.getCategory()%><br/>
+        <strong>Kategoria:</strong> <%= product.getCategory() %><br/>
         <strong>Nazwa:</strong> <%= product.getName() %><br/>
         <strong>Cena:</strong> <%= product.getPrice() %> PLN<br/>
-        <strong>Opis:</strong> <%= product.getDescription() %>
+        <strong>Opis:</strong> <%= product.getDescription() %><br/>
         <img src="image/<%= product.getImage() %>" alt="<%= product.getName() %>" style="width:200px; height:auto;"/>
         <form action="cart" method="post">
             <input type="hidden" name="productId" value="<%=product.getId()%>" />
-            <label for="quantity_<%=product.getId() %>" type="number" name="quantity" value="1" min="1"/>
-            <button type="submit"class="btn btn-dark">Dodaj do koszyka</button>
-            </form>
-    <% } %>
+            <input type="number" name="quantity" value="1" min="1"/>
+            <button type="submit" class="btn btn-dark">Dodaj do koszyka</button>
+        </form>
+    </li>
+    <%   } // if
+    } // for %>
 </ul>
 <% } %>
+
+
+
 </body>
 </html>
