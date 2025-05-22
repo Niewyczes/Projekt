@@ -29,12 +29,15 @@
 <h3>Rejestracja:</h3>
 <a href="formularz.jsp">Kliknij tutaj aby dokonać rejestracji</a>
 <%} else{ %>
-<p> Witaj <%= user.getName() %>!</p>
-<% } %>
-<form action = 'logout' method ='post'>
-    <input type ='submit' value='Wyloguj się'/>
-</form>
-<% %>
+<p> Witaj <%= user.getName() %> <%=user.getSurname()%>!</p>
+    <form action='user-panel' method ='post'>
+        <input type = 'submit' value='Profil użytkownika'/>
+        </form>
+        <form action = 'logout' method ='post'>
+        <input type ='submit' value='Wyloguj się'/>
+        </form>
+<%} %>
+
 
 <h2>Oto nasze produkty:</h2>
 <h2>Kategorie:</h2>

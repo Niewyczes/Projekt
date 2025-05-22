@@ -32,32 +32,32 @@ public class HelloServlet extends HttpServlet { ;
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String imie = request.getParameter("imie");
-        String nazwisko = request.getParameter("nazwisko");
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
         String login = request.getParameter("login");
-        String haslo = request.getParameter("haslo");
-        if(imie==null || nazwisko==null || login==null || haslo==null ||
-            imie.isEmpty() || nazwisko.isEmpty() || login.isEmpty() || haslo.isEmpty()) {
+        String password = request.getParameter("password");
+        if(name==null || surname==null || login==null || password==null ||
+                name.isEmpty() || surname.isEmpty() || login.isEmpty() || password.isEmpty()) {
         request.setAttribute("error","Trzeba wypełnić wszystkie pola");
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
         }
-        if(imie.length()<4 || imie.length() >20){
+        if(name.length()<4 || name.length() >20){
             request.setAttribute("error", "Imię musi mieć od 4 do 20 znaków");
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
         }
-        if (!imie.matches("\\p{L}+")){
+        if (!name.matches("\\p{L}+")){
             request.setAttribute("error","Imie musi zawierać tylko litery");
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
         }
-        if(!nazwisko.matches("\\p{L}+")){
+        if(!surname.matches("\\p{L}+")){
             request.setAttribute("error","Nazwisko musi zawierać tylko litery");
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
         }
-        if(nazwisko.length()<4 || nazwisko.length() >20){
+        if(surname.length()<4 || surname.length() >20){
             request.setAttribute("error", "Nazwisko musi mieć od 4 do 20 znaków");
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
@@ -72,26 +72,28 @@ public class HelloServlet extends HttpServlet { ;
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
         }
-        if(haslo.length() < 6||haslo.length()>20) {
+        if(password.length() < 6||password.length()>20) {
             request.setAttribute("error","Hasło musi mieć długość conajmniej 5 znaków i nie więcej niż 20");
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
         }
-        if (!haslo.matches(".*[^a-zA-Z0-9].*")) {
+        if (!password.matches(".*[^a-zA-Z0-9].*")) {
             request.setAttribute("error", "Hasło musi zawierać przynajmniej jeden znak specjalny.");
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
         }
-        if (!haslo.matches(".*\\d.*")) {
+        if (!password.matches(".*\\d.*")) {
             request.setAttribute("error", "Hasło musi zawierać przynajmniej jedną cyfrę.");
             request.getRequestDispatcher("formularz.jsp").forward(request, response);
             return;
         }
 
-            User newUser = new User(imie,nazwisko,login,haslo);
+            User newUser = new User(name,surname,login,password);
         UserList.addUser(newUser);
+        User userFromList = UserList.getUser(login);
         HttpSession session = request.getSession();
-        session.setAttribute("user",newUser);
+        session.setAttribute("user",userFromList);
+        session.setAttribute("login",login);
         response.sendRedirect("index.jsp");
     }
     public void destroy() {
