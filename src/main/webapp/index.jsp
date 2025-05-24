@@ -38,17 +38,6 @@
         </form>
 <%} %>
 
-
-<h2>Oto nasze produkty:</h2>
-<% if (products == null) { %>
-<p style="color:red;">Produkty nie zostały załadowane!</p>
-<% } else { %>
-<p style="color:green;">Załadowano <%= products.size() %> produktów!</p>
-<ul>
-        <% for (Product product : products) {
-        if (selectedCategory == null || product.getCategory().equalsIgnoreCase(selectedCategory)) {
-    %>
-
 <h2>Kategorie:</h2>
 <div class="category-menu">
     <a href="index.jsp?kategoria=Wędziska">Wędziska</a>
@@ -57,6 +46,24 @@
     <a href="index.jsp?kategoria=Podbieraki">Podbieraki</a>
     <a href="index.jsp">[Pokaż wszystkie]</a>
 </div>
+
+<h2>Oto nasze produkty:</h2>
+<% if (products == null) { %>
+<p style="color:red;">Produkty nie zostały załadowane!</p>
+<% } else { %>
+<%
+    int visibleProductCount = 0;
+    for (Product product : products) {
+        if (selectedCategory == null || product.getCategory().equalsIgnoreCase(selectedCategory)) {
+            visibleProductCount++;
+        }
+    }
+%>
+<p style="color:green;">Załadowano <%= visibleProductCount %> produktów<%= (selectedCategory != null ? " w kategorii: " + selectedCategory : "") %>!</p>
+<ul>
+    <% for (Product product : products) {
+        if (selectedCategory == null || product.getCategory().equalsIgnoreCase(selectedCategory)) {
+    %>
 
     <li>
         <strong>Kategoria:</strong> <%= product.getCategory() %><br/>
