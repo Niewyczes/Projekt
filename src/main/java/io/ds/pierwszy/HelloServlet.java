@@ -36,6 +36,8 @@ public class HelloServlet extends HttpServlet { ;
         String surname = request.getParameter("surname");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+        String phone_number= null;
+        String adress= null;
         if(name==null || surname==null || login==null || password==null ||
                 name.isEmpty() || surname.isEmpty() || login.isEmpty() || password.isEmpty()) {
         request.setAttribute("error","Trzeba wypełnić wszystkie pola");
@@ -88,7 +90,7 @@ public class HelloServlet extends HttpServlet { ;
             return;
         }
 
-            User newUser = new User(name,surname,login,password);
+            User newUser = new User(name,surname,login,password, phone_number, adress);
         UserList.addUser(newUser);
         User userFromList = UserList.getUser(login);
         HttpSession session = request.getSession();

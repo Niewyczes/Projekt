@@ -35,9 +35,14 @@ public class UserPanelServlet extends HttpServlet {
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String password = request.getParameter("password");
+         String phone_number= request.getParameter("phone_number");
+         String adress = request.getParameter("adress");
         if (name != null && !name.isEmpty()) user.setName(name);
         if (surname != null && !surname.isEmpty()) user.setSurname(surname);
         if (password != null && !password.isEmpty()) user.setPassword(password);
+         if ( phone_number != null && !phone_number.isEmpty()) user. setPhone_Number(phone_number);
+         if ( adress != null && !adress.isEmpty()) user.setAdress(adress);
+
         response.sendRedirect("user-panel");
     }
 }

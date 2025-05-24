@@ -36,7 +36,7 @@ public class AppStartupListener implements ServletContextListener {
 
         sce.getServletContext().setAttribute("globalProducts", products);
     }
-
+//mapowanie produkt klucz ilosc 2 klucz
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
 
