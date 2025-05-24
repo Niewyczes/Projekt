@@ -1,0 +1,13 @@
+.root {
+    -fx-background-color: #103d1b; /* Dark green */
+}
+.text {
+    -fx-fill: #81c784; /* Light green for title text */
+}
+.button {
+    -fx-background-radius: 8;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-pref-width: 220px;
+    -fx-background-color: linear-gradient(#43a047, #81c784); /* Green to light green */
+}
