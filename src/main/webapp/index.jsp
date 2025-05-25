@@ -30,10 +30,12 @@
 <h1>Rypka!</h1>
 <%if (user==null){ %>
 <h2>Potrzebujesz artykułów wędkarskich albo chcesz zacząć</h2>
-<h3>Zaloguj się:</h3>
-<a href="logowanie.jsp">Kliknij tutaj aby się zalogować</a>
-<h3>Rejestracja:</h3>
-<a href="formularz.jsp">Kliknij tutaj aby dokonać rejestracji</a>
+<form action="logowanie.jsp">
+    <input type="submit" value="Zaloguj się" />
+</font>
+<form action="formularz.jsp">
+    <input type="submit" value="Zajerestruj się" />
+</font>
 <%} else{ %>
 <p> Witaj <%= user.getName() %> <%=user.getSurname()%>!</p>
     <form action='user-panel' method ='post'>
