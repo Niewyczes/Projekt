@@ -12,7 +12,13 @@
 <body>
 <style>
     h1 {
+        color: darkgreen;
         text-align: center;
+        font-family:"Bodoni MT";
+    }
+    h2{
+        text-align: center;
+        font-size: 36px;
     }
 </style>
 <%
@@ -21,7 +27,7 @@
     String selectedCategory = request.getParameter("kategoria"); //test
 %>
 
-<h1>Witamy na stronie Rypka!</h1>
+<h1>Rypka!</h1>
 <%if (user==null){ %>
 <h2>Potrzebujesz artykułów wędkarskich albo chcesz zacząć</h2>
 <h3>Zaloguj się:</h3>
