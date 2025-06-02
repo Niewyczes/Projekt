@@ -11,6 +11,9 @@
 </head>
 <body>
 <style>
+    body {
+      background-color: lightyellow;
+    }
     h1 {
         color: darkgreen;
         text-align: center;
@@ -19,6 +22,9 @@
     h2{
         text-align: center;
         font-size: 36px;
+    }
+    .category-menu{
+    text-align:center;
     }
 </style>
 <%
@@ -30,12 +36,8 @@
 <h1>Rypka!</h1>
 <%if (user==null){ %>
 <h2>Potrzebujesz artykułów wędkarskich albo chcesz zacząć</h2>
-<form action="logowanie.jsp">
-    <input type="submit" value="Zaloguj się" />
-</font>
-<form action="formularz.jsp">
-    <input type="submit" value="Zajerestruj się" />
-</font>
+<a href="logowanie.jsp">ZALOGUJ SIĘ</a>
+<a href="formularz.jsp">REJESTRACJA</a>
 <%} else{ %>
 <p> Witaj <%= user.getName() %> <%=user.getSurname()%>!</p>
     <form action='user-panel' method ='post'>
