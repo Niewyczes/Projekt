@@ -6,27 +6,87 @@
 <html>
 <head>
     <title>Rypka</title>
-    <link rel="stylesheet" href="styl.css"/>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<style>
+    <style>
     body {
-      background-color: lightyellow;
+        background-color: lightyellow;
+        font-family: Arial, sans-serif;
     }
+
     h1 {
         color: darkgreen;
         text-align: center;
-        font-family:"Bodoni MT";
+        font-family: "Bodoni MT", serif;
+        margin-top: 20px;
     }
-    h2{
+
+    h2 {
         text-align: center;
-        font-size: 36px;
+        font-size: 28px;
+        color: #006400;
     }
-    .category-menu{
-    text-align:center;
+
+    a {
+        display: inline-block;
+        margin: 10px;
+        text-decoration: none;
+        color: #004d00;
+        background-color: #ccffcc;
+        padding: 8px 16px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
     }
-</style>
+
+    a:hover {
+        background-color: #b3ffb3;
+    }
+
+    .category-menu {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    li {
+        border: 1px solid #a0d6a0;
+        border-radius: 10px;
+        padding: 15px;
+        width: 280px;
+        background-color: #e6ffe6;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    li img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin: 10px 0;
+    }
+
+    p {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    button.btn-dark {
+        background-color: #006400;
+        border-color: #006400;
+    }
+
+    button.btn-dark:hover {
+        background-color: #004d00;
+    }
+  </style>
+</head>
+<body>
+
 <%
     User user = (User) session.getAttribute("user");
     List<Product> products = (List<Product>) application.getAttribute("globalProducts");
