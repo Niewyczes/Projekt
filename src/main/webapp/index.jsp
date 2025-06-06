@@ -92,7 +92,18 @@
     List<Product> products = (List<Product>) application.getAttribute("globalProducts");
     String selectedCategory = request.getParameter("kategoria"); //test
 %>
-
+<%
+    String success=request.getParameter("success");
+    if("1".equals(success)){
+        String productName=(String)session.getAttribute("LastAddedProductName");
+        Integer quantity=(Integer)session.getAttribute("LastAddedQuantity");
+%>
+<div>
+    Dodano do koszyka <strong><%=productName %></strong>,ilość: <strong><%=quantity%></strong> :)
+</div>
+<%
+    }
+%>
 <h1>Rypka!</h1>
 <%if (user==null){ %>
 <h2>Potrzebujesz artykułów wędkarskich albo chcesz zacząć</h2>
@@ -141,7 +152,7 @@
         <strong>Cena:</strong> <%= product.getPrice() %> PLN<br/>
         <strong>Opis:</strong> <%= product.getDescription() %><br/>
         <img src="image/<%= product.getImage() %>" alt="<%= product.getName() %>" style="width:200px; height:auto;"/>
-        <form action="cart" method="post">
+        <form action="cart-servlet" method="post">
             <input type="hidden" name="productId" value="<%=product.getId()%>" />
             <input type="number" name="quantity" value="1" min="1"/>
             <button type="submit" class="btn btn-dark">Dodaj do koszyka</button>
