@@ -118,7 +118,7 @@
         <input type ='submit' value='Wyloguj się'/>
         </form>
 <%} %>
-
+<a href="koszyk.jsp">Zobacz koszyk</a>
 <h2>Kategorie:</h2>
 <div class="category-menu">
     <a href="index.jsp?kategoria=Wędziska">Wędziska</a>

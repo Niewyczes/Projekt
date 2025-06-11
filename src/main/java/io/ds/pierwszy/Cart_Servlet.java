@@ -15,31 +15,35 @@ import java.util.Map;
         value = {"/cart-servlet"}
 )
 public class Cart_Servlet extends HttpServlet {
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    HttpSession session=request.getSession();
-    int productId=Integer.parseInt(request.getParameter("productId"));
-    int quantity=Integer.parseInt(request.getParameter("quantity"));
-    List<Product> globalProducts=(List<Product>) getServletContext().getAttribute("globalProducts");
-    Product this_product=null;
-    for (Product p:globalProducts){
-        if (p.getId()==productId){
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        List<Product> globalProducts = (List<Product>) getServletContext().getAttribute("globalProducts");
+        Product this_product = null;
+        for (Product p : globalProducts) {
+            if (p.getId() == productId) {
 
-            this_product=p;
-            break;
+                this_product = p;
+                break;
+            }
         }
-    }
-    Map <Integer,Integer> cart=(Map<Integer,Integer>)session.getAttribute("cart");
-    if (cart==null){
-        cart=new HashMap<>();
-    }
-    int currentQuantity=cart.getOrDefault(productId,0);
-    cart.put(productId,currentQuantity+quantity);
+        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+        if (cart == null) {
+            cart = new HashMap<>();
+        }
+        Cart existingCartItem=cart.get(productId);
+        if (existingCartItem==null) {
+            cart.put(productId, new Cart(this_product, quantity));
+        }else{
+            existingCartItem.setQuantity(existingCartItem.getQuantity()+quantity);
+        }
+        session.setAttribute("cart", cart);
+        session.setAttribute("LastAddedProductName", this_product.getName());
+        session.setAttribute("LastAddedQuantity", quantity);
 
-    session.setAttribute("cart",cart);
-    session.setAttribute("LastAddedProductName",this_product.getName());
-    session.setAttribute("LastAddedQuantity",quantity);
+        response.sendRedirect("index.jsp?success=1");
 
-    response.sendRedirect("index.jsp?success=1");
+    }
 
 }
-    }
