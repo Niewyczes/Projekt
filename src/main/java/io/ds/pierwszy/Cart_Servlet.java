@@ -44,6 +44,7 @@ public class Cart_Servlet extends HttpServlet {
 
         response.sendRedirect("index.jsp?success=1");
 
+
     }
 
 }
