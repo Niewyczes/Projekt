@@ -4,36 +4,56 @@
 <head>
     <title>Logowanie</title>
     <style>
-            body {
-                background-color: lightyellow;
-                font-family: Arial, sans-serif;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fffecb; /* jasnożółte tło */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-            .form-wrapper {
-                background-color: #ccffcc; /* jasnozielone tło */
-                padding: 30px 40px;
-                border-radius: 12px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                max-width: 400px;
-                width: 100%;
-                text-align: center;
-            }
+        form {
+            background-color: #90ee90; /* jasna zieleń */
+            padding: 30px 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            place-items: center;
+            flex-direction: column;
+        }
 
-            h1 {
-                color: darkgreen;
-                font-family: "Bodoni MT", serif;
-                margin-bottom: 20px;
-            }
+        a {
+            padding: 12px;
+            background-color: #006400; /* ciemnozielony */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            background-color: #004d00; /* jeszcze ciemniejszy zielony */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #006400; /* ciemnozielony */
+            font-family: "Bodoni MT", serif;
+        }
 
             input[type="text"],
             input[type="password"] {
                 width: 100%;
                 padding: 10px;
-                margin: 8px 0;
+                margin: 0 auto;
+                display: grid;
                 border: 1px solid #66cc66;
                 border-radius: 6px;
             }
@@ -46,6 +66,7 @@
                 border-radius: 6px;
                 cursor: pointer;
                 margin-top: 10px;
+                transition: background-color 0.3s ease;
             }
 
             input[type="submit"]:hover {
@@ -69,6 +90,8 @@
 Wpisz login: <input type="text" name="login"/>
 Wpisz hasło: <input type="password" name="haslo"/>
 <input type="submit" value="Wyślij">
+    <a href="index.jsp"> Powrót do strony głównej</a>
 </form>
+
 </body>
 </html>

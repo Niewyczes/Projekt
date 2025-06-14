@@ -3,6 +3,51 @@
 <html>
 <head>
   <title>Koszyk</title>
+  <style>
+    body {
+      background-color: lightyellow;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #006400; /* ciemnozielony */
+      font-family: "Bodoni MT", serif;
+    }
+
+    a {
+      padding: 12px;
+      background-color: #006400; /* ciemnozielony */
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    a:hover {
+      background-color: #004d00; /* jeszcze ciemniejszy zielony */
+    }
+
+    button {
+      padding: 12px;
+      background-color: #006400; /* ciemnozielony */
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d00; /* jeszcze ciemniejszy zielony */
+    }
+
+  </style>
 </head>
 <body>
 <h1>Mój koszyk</h1>

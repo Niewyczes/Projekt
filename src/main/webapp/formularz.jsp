@@ -17,10 +17,10 @@
             background-color: #90ee90; /* jasna zieleń */
             padding: 30px 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
             display: flex;
+            place-items: center;
             flex-direction: column;
         }
         .form-wrap {
@@ -34,9 +34,26 @@
             flex-direction: column;
             align-items: center;
         }
+
+        a{
+            background-color: darkgreen;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: #004d00;
+        }
+
         h1 {
             margin-bottom: 20px;
             color: #006400; /* ciemnozielony */
+            font-family: "Bodoni MT", serif;
         }
 
         form input[type="text"],
@@ -83,6 +100,7 @@
     Wpisz imię: <input type="text" name="name" maxlength="14" minlength="4" />
     Wpisz nazwisko: <input type="text" name="surname" maxlength="30" minlength="4" />
     <input type="submit" value="Wyślij">
+    <a href="index.jsp"> Powrót do strony głównej</a>
 </form>
 </div>
 </body>
