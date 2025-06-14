@@ -25,6 +25,7 @@ if (cart !=null && !cart.isEmpty()) {
   %>
 <p><strong>Suma:<%=String.format("%.2f",total)%> PLN</strong></p>
 <form action="Strona_z_podziękowaniem.jsp" method ="post">
+  <input type="hidden" name="action" value="order">
   <button type="submit">Zamawiam</button>
 </form>
 <%
