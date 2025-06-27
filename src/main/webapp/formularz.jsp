@@ -56,15 +56,17 @@
             font-family: "Bodoni MT", serif;
         }
 
-        form input[type="text"],
-        form input[type="password"] {
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
-        }
+      form input[type="text"],
+      form input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          margin-top: 5px;
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 14px;
+          box-sizing: border-box;
+      }
 
         form input[type="submit"] {
             padding: 12px;

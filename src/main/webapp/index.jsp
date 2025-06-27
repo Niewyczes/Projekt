@@ -26,20 +26,33 @@
         color: #006400;
     }
 
-    a {
-        display: inline-block;
-        margin: 10px;
-        text-decoration: none;
-        color: #004d00;
-        background-color: #ccffcc;
-        padding: 8px 16px;
-        border-radius: 6px;
-        transition: background-color 0.3s ease;
-    }
+    .btn-main {
+                background-color: #ccffcc;
+                color: #004d00;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: background-color 0.3s ease;
+                display: inline-block;
+                text-align: center;
+                margin: 8px 10px 8px 0;
+                min-width: 140px;
+            }
 
-    a:hover {
-        background-color: #b3ffb3;
-    }
+            .btn-main:hover {
+                background-color: #b3ffb3;
+            }
+
+            .category-menu {
+                text-align: center;
+                margin-bottom: 20px;
+            }
 
     .category-menu {
         text-align: center;
@@ -75,14 +88,12 @@
         font-size: 18px;
     }
 
-    button.btn-dark {
-        background-color: #006400;
-        border-color: #006400;
-    }
-
-    button.btn-dark:hover {
-        background-color: #004d00;
-    }
+     button.btn-main {
+                min-width: auto;
+                padding: 8px 16px;
+                text-transform: none;
+                font-weight: normal;
+            }
   </style>
 </head>
 <body>
@@ -98,7 +109,7 @@
         String productName=(String)session.getAttribute("LastAddedProductName");
         Integer quantity=(Integer)session.getAttribute("LastAddedQuantity");
 %>
-<div>
+<div style="text-align:center; margin: 10px 0; color:green;">
     Dodano do koszyka <strong><%=productName %></strong>,ilość: <strong><%=quantity%></strong> :)
 </div>
 <%
@@ -107,18 +118,20 @@
 <h1>Rypka!</h1>
 <%if (user==null){ %>
 <h2>Potrzebujesz artykułów wędkarskich albo chcesz zacząć</h2>
-<a href="logowanie.jsp">ZALOGUJ SIĘ</a>
-<a href="formularz.jsp">REJESTRACJA</a>
+<a href="logowanie.jsp" class="btn-main">ZALOGUJ SIĘ</a>
+    <a href="formularz.jsp" class="btn-main">REJESTRACJA</a>
 <%} else{ %>
 <p> Witaj <%= user.getName() %> <%=user.getSurname()%>!</p>
-    <form action='user-panel' method ='post'>
-        <input type = 'submit' value='Profil użytkownika'/>
-        </form>
-        <form action = 'logout' method ='post'>
-        <input type ='submit' value='Wyloguj się'/>
-        </form>
+ <form action="user-panel" method="post" style="text-align:center; margin-bottom: 10px;">
+         <button type="submit" class="btn-main">Profil użytkownika</button>
+     </form>
+     <form action="logout" method="post" style="text-align:center; margin-bottom: 10px;">
+         <button type="submit" class="btn-main">Wyloguj się</button>
+     </form>
 <%} %>
-<a href="koszyk.jsp">Zobacz koszyk</a>
+<div style="text-align:center; margin-bottom: 20px;">
+    <a href="koszyk.jsp" class="btn-main">Zobacz koszyk</a>
+</div>
 <h2>Kategorie:</h2>
 <div class="category-menu">
     <a href="index.jsp?kategoria=Wędziska">Wędziska</a>
